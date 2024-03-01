@@ -1,25 +1,41 @@
-import logo from './logo.svg';
+import React, { useState } from 'react';
 import './App.css';
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+  // below creates an array that will hold the list of tasks for the todo list. 
+  // The variable is tasks. The useState hook is used. 
+  const [formQues, setFormQues] = useState({
+firstName: "",
+newUserName: "",
+favouriteColour: "",
+favouriteNumber: "",
+paragraphOnDailyActivity: "",
+});
+
+const handleSubmit = (e) => {
+  e.preventDefault();
+// this should display the data underneath the form (it's handling the submitted data).
+  console.log('Submitted Data:', formQues);
+  //above line should clear the data?
+  setFormQues({
+    firstName: "",
+newUserName: "",
+favouriteColour: "",
+favouriteNumber: "",
+paragraphOnDailyActivity: "",
+});
+};
+
+const handleChange = (e) => {
+  const { name, value } = e.target;
+setFormQues({
+  ...formQues,
+  [name]: value,
+});
+};
+
+
+
 }
 
 export default App;
